@@ -92,7 +92,7 @@ textfilebean
       <td>CharColumn</td><td>なし。キャラクタ一文字だけ。</td>
     </tr>
     <tr>
-      <td>DelimCharColumn</td><td>可変長の区切り文字をdelimで指定(必須)。</td>
+      <td>DelimCharColumn</td><td>可変長の区切り文字をdelimで指定(必須)。Stringのフィールドに付与してね。</td>
     </tr>
     <tr>
       <td>IntegerColumn</td><td>固定桁整数型。桁数をlengthで指定(必須)。尻切れになったら困る場合はstrict=trueを指定する。</td>
