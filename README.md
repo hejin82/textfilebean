@@ -6,6 +6,7 @@ textfilebean
  * 対象年齢:3歳以上
  * 対象バージョン:Java 6以上
  * 依存ライブラリ:なし
+ * ライセンス:Apache License 2.0 http://www.apache.org/licenses/LICENSE-2.0.txt
 
 使い方：target/textfilebean-x.x.x.jarをクラスパスに通す。
 
