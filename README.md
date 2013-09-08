@@ -109,4 +109,5 @@ textfilebean
  * 日付型、数値フォーマッタ
  * BeanValidation(JSR-303)
  * charじゃなくてバイト列でも使いたい
- * 既存のJavaBeansに迷惑をかけるので、アノテーションによる設定を外だし。
+ * 既存のJavaBeansに迷惑をかけるので、アノテーションによる設定を外だし
+ * Maven Central Repositoryへの登録
