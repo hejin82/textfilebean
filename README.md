@@ -1,7 +1,7 @@
 textfilebean
 ============
 
-固定長／可変長（キャラクタ区切り）のテキストファイルをJavaBeanにマッピングさせる
+固定長／可変長（キャラクタ区切り）のテキストファイルをJavaBeansにマッピングさせる
 
  * 対象年齢:3歳以上
  * 対象バージョン:Java 6以上
@@ -33,7 +33,7 @@ textfilebean
     003:Vanessa   :Williams  
     004:名無しの      :権兵衛       
 
-マッピングされるJavaBeanの書き方:
+マッピングされるJavaBeansの書き方:
 
     public class FooBean {
         // ファイルから読み取られる順番でフィールドにアノテーションをつける。
@@ -89,16 +89,16 @@ textfilebean
       <th>アノテーション</th><th>属性</th>
     </tr>
     <tr>
-      <td>CharColumn</td><td>なし。キャラクタ一文字だけ。</td>
+      <td>CharColumn</td><td>なし。キャラクタ一文字だけ。charフィールドに付与してね。</td>
     </tr>
     <tr>
       <td>DelimCharColumn</td><td>可変長の区切り文字をdelimで指定(必須)。Stringのフィールドに付与してね。</td>
     </tr>
     <tr>
-      <td>IntegerColumn</td><td>固定桁整数型。桁数をlengthで指定(必須)。尻切れになったら困る場合はstrict=trueを指定する。</td>
+      <td>IntegerColumn</td><td>固定桁整数型。桁数をlengthで指定(必須)。尻切れになったら困る場合はstrict=trueを指定する。intフィールドに付与してね。</td>
     </tr>
     <tr>
-      <td>StringColumn</td><td>固定桁文字列型。桁数をlengthで指定(必須)。尻切れになったら困る場合はstrict=trueを指定する。</td>
+      <td>StringColumn</td><td>固定桁文字列型。桁数をlengthで指定(必須)。尻切れになったら困る場合はstrict=trueを指定する。String(ry</td>
     </tr>
   </table>
 
@@ -107,3 +107,5 @@ textfilebean
  * 型を増やす
  * 日付型、数値フォーマッタ
  * BeanValidation(JSR-303)
+ * charじゃなくてバイト列でも使いたい
+ * 既存のJavaBeansに迷惑をかけるので、アノテーションによる設定を外だし。
