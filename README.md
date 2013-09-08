@@ -4,6 +4,7 @@ textfilebean
 固定長／可変長（キャラクタ区切り）のテキストファイルをJavaBeanにマッピングさせる
 
 使い方：
+
     CharacterReadProcessor<FooBean> processor = new CharacterReadProcessor<FooBean>();
     InitialLoader loader = new AnnotationLoader();
     FieldColumn[] fieldColumns = loader.load(FooBean.class);
@@ -29,7 +30,8 @@ textfilebean
     004:名無しの      :権兵衛       
 
 マッピングされるJavaBeanの書き方:
-    class FooBean {
+
+    public class FooBean {
         // ファイルから読み取られる順番でフィールドにアノテーションをつける。
         @IntegerColumn(length=3) private int i;
         @CharColumn private char delim1;
@@ -37,7 +39,7 @@ textfilebean
         @CharColumn private char delim2;
         @StringColumn(length=10) private String name;
         @StringColumn(length=1) private String terminal;
-    
+        
         public int getI() {
             return i;
         }
