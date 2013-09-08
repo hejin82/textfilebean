@@ -3,29 +3,32 @@ textfilebean
 
 固定長／可変長（キャラクタ区切り）のテキストファイルをJavaBeanにマッピングさせる
 
-使い方：
+ * 対象年齢:3歳以上
+ * 対象バージョン:Java 6以上
 
-    CharacterReadProcessor<FooBean> processor = new CharacterReadProcessor<FooBean>();
-    InitialLoader loader = new AnnotationLoader();
-    FieldColumn[] fieldColumns = loader.load(FooBean.class);
+使い方：target/textfilebean-x.x.x.jarをクラスパスに通す。
+
+    AnnotationBeanReaderFactory<FooBean> factory = new AnnotationBeanReaderFactory<FooBean>();
     Reader reader = null;
     try  {
         reader = new BufferedReader(new InputStreamReader(
             new FileInputStream("sample/sample.txt"), "Windows-31J"));
-        // 1st line.(テキストファイルの内容がFooBeanにマッピングされる。)
+        RecordReader<FooBean> beanReader = factory.createReader(reader);
+        // テキストファイルの内容がFooBeanにマッピングされる。
         // 繰り返し読んでいって、EOFの場合nullが返る。
-        FooBean bean = processor.process(reader, FooBean.class, fieldColumns);
+        FooBean bean = beanReader.readLine();
     } catch {
         // 省略
     } finally {
-        // 省略
+        // 省略。でもJava 6の場合はちゃんとクローズしましょう。
     }
 
 読み取りたいテキストファイルがこんなんだったりする。(sample/sample.txt)
+全角テキストもchar一文字と認識される。
 
     123:1234567890:1234567890
-    001:Michel    :Jordan    
-    002:Michel    :Jacson    
+    001:Michael   :Jordan    
+    002:Michael   :Jackson    
     003:Vanessa   :Williams  
     004:名無しの      :権兵衛       
 
@@ -77,3 +80,29 @@ textfilebean
             this.terminal = terminal;
         }
     }
+
+アノテーションの種類:
+
+  <table>
+    <tr>
+      <th>アノテーション</th><th>属性</th>
+    </tr>
+    <tr>
+      <td>CharColumn</td><td>なし。キャラクタ一文字だけ。</td>
+    </tr>
+    <tr>
+      <td>DelimCharColumn</td><td>可変長の区切り文字をdelimで指定(必須)。</td>
+    </tr>
+    <tr>
+      <td>IntegerColumn</td><td>固定桁整数型。桁数をlengthで指定(必須)。尻切れになったら困る場合はstrict=trueを指定する。</td>
+    </tr>
+    <tr>
+      <td>StringColumn</td><td>固定桁文字列型。桁数をlengthで指定(必須)。尻切れになったら困る場合はstrict=trueを指定する。</td>
+    </tr>
+  </table>
+
+今後やりたいこと:
+
+ * 型を増やす
+ * 日付型
+ * BeanValidation(JSR-303)
