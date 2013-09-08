@@ -5,6 +5,7 @@ textfilebean
 
  * 対象年齢:3歳以上
  * 対象バージョン:Java 6以上
+ * 依存ライブラリ:なし
 
 使い方：target/textfilebean-x.x.x.jarをクラスパスに通す。
 
@@ -104,5 +105,5 @@ textfilebean
 今後やりたいこと:
 
  * 型を増やす
- * 日付型
+ * 日付型、数値フォーマッタ
  * BeanValidation(JSR-303)
